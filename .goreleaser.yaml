@@ -1,0 +1,48 @@
+before:
+  hooks:
+    - go mod download
+builds:
+  - id: dd_downloader
+    binary: dd_downloader
+    main: cli/main.go
+    ldflags: &ldflags
+      - -s -w
+        -X github.com/girishg4t/dd_downloader/pkg/version.VERSION={{.Tag}}
+        -X github.com/girishg4t/dd_downloader/pkg/version.GIT_COMMIT_ID={{.Commit}}
+        -X github.com/girishg4t/dd_downloader/pkg/version.BUILD_DATE={{.Date}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+# temporary workaround to distribute binaries
+release:
+  github:
+    owner: girishg4t
+    name: dd_downloader
+  draft: true
+  prerelease: auto
+  disable: false

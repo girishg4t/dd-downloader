@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"log"
+
 	file_processor "github.com/dd-downloader/pkg/csv"
 	"github.com/spf13/cobra"
 )
@@ -22,5 +24,6 @@ var cmdConfig = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		configFileNameFlag, _ := cmd.Flags().GetString(configFileName)
 		file_processor.CreateConfigYAML(configFileNameFlag)
+		log.Printf("generated sample config file at location %s\n", configFileNameFlag)
 	},
 }
