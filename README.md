@@ -17,7 +17,7 @@ $ make
 
 #### Step 3: Run the command
 ```bash
-$ dd-downloader generate config --name=config.yam/ # generates the sample yaml file with date range of 10min
+$ dd-downloader generate config --name=config.yaml # generates the sample yaml file with date range of 10min
 $ dd-downloader validate --config-file=./sample_templates/event_sent.yaml # just validate if the mapping and template is correct
 $ dd-downloader run sync --config-file=templates/queued_event.yaml --file=output.csv # will download logs one after the other in chucks of 5000
 $ dd-downloader run parallel --config-file=templates/private_event.yaml --file=output.csv  # will run 10 parallel threads to reduce the time of download
