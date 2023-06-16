@@ -8,7 +8,7 @@ spec:
     dd_app_key: "xxxxxxxxxx"
   datadog_filter:
     mode: synchronous
-    query: "service:super-sdk @view.url_details.host:app.gather.town "
+    query: "service:frontend @view.url_details.host:example.com "
     from: 1686656100000
     to: 1686670500000
   mapping:
