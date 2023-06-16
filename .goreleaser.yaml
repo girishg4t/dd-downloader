@@ -4,7 +4,7 @@ before:
 builds:
   - id: dd_downloader
     binary: dd_downloader
-    main: cli/main.go
+    main: main.go
     ldflags: &ldflags
       - -s -w
         -X github.com/girishg4t/dd_downloader/pkg/version.VERSION={{.Tag}}
