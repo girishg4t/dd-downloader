@@ -7,7 +7,7 @@ import (
 	"path"
 	"time"
 
-	"github.com/dd-downloader/pkg/model"
+	"github.com/girishg4t/dd-downloader/pkg/model"
 	"gopkg.in/yaml.v2"
 )
 

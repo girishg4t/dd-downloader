@@ -1,4 +1,4 @@
-module github.com/dd-downloader
+module github.com/girishg4t/dd-downloader
 
 go 1.18
 

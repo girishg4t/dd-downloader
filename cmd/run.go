@@ -3,7 +3,7 @@ package cmd
 import (
 	"log"
 
-	csv_processor "github.com/dd-downloader/pkg/csv"
+	csv_processor "github.com/girishg4t/dd-downloader/pkg/csv"
 	"github.com/spf13/cobra"
 )
 

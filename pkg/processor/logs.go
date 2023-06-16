@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/dd-downloader/pkg/model"
+	"github.com/girishg4t/dd-downloader/pkg/model"
 )
 
 //TODO: need to find simple approach for below logic

@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/dd-downloader/cmd"
+	"github.com/girishg4t/dd-downloader/cmd"
 )
 
 func main() {

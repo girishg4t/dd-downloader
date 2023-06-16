@@ -1,6 +1,6 @@
 package util
 
-import "github.com/dd-downloader/pkg/model"
+import "github.com/girishg4t/dd-downloader/pkg/model"
 
 func ReadHeader(m []model.InnerFieldMapping, headers *[]string) {
 	for _, val := range m {

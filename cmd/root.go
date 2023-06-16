@@ -5,8 +5,8 @@ import (
 	"os"
 	"path"
 
-	"github.com/dd-downloader/pkg/model"
-	"github.com/dd-downloader/pkg/processor"
+	"github.com/girishg4t/dd-downloader/pkg/model"
+	"github.com/girishg4t/dd-downloader/pkg/processor"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 )

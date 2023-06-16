@@ -8,10 +8,10 @@ import (
 	"sync"
 
 	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	csv_processor "github.com/dd-downloader/pkg/csv"
-	dd "github.com/dd-downloader/pkg/datadog"
-	"github.com/dd-downloader/pkg/model"
-	"github.com/dd-downloader/pkg/util"
+	csv_processor "github.com/girishg4t/dd-downloader/pkg/csv"
+	dd "github.com/girishg4t/dd-downloader/pkg/datadog"
+	"github.com/girishg4t/dd-downloader/pkg/model"
+	"github.com/girishg4t/dd-downloader/pkg/util"
 )
 
 var ddLogs func(after *string)

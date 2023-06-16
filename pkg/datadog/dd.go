@@ -8,7 +8,7 @@ import (
 
 	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
 	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/dd-downloader/pkg/model"
+	"github.com/girishg4t/dd-downloader/pkg/model"
 )
 
 func GetDataDogLogs(filter model.DataDogFilter, cur *string, limit int32) datadogV2.LogsListResponse {
