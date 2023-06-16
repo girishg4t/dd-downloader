@@ -1,0 +1,5 @@
+*.csv
+*.json
+dd-downloader
+.vscode
+.env.example

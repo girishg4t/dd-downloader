@@ -1,0 +1,31 @@
+apiVersion: datadog/v1
+kind: DataDog
+spec:
+  auth:
+    dd_site: "datadoghq.com"
+    dd_api_key: "xxxxxxxxxx"
+    dd_app_key: "xxxxxxxxxx"
+  datadog_filter:
+    mode: parallel
+    query: 'service:(managedservices-prod) (\"received private event message from ably queue\")'
+    from: 1686335400000
+    to: 1686421740000
+  mapping:
+    - field: "app_id"
+      dd_field: "msg_body.appId"
+    - field: "site"
+      dd_field: "msg_body.site"
+    - field: "-"
+      dd_field: "msg_body.messages"
+      inner_field:
+        - field: "message_id"
+          dd_field: "id"
+        - field: "timestamp"
+          dd_field: "timestamp"
+        - field: "-"
+          dd_field: "data"
+          inner_field:
+            - field: "req_id"
+              dd_field: "rqid"
+            - field: "event_ts"
+              dd_field: "ets"

@@ -1,0 +1,31 @@
+apiVersion: datadog/v1
+kind: DataDog
+mode: synchronous
+spec:
+  auth:
+    dd_site: "datadoghq.com"
+    dd_api_key: "xxxxxxxxxx"
+    dd_app_key: "xxxxxxxxxx"
+  datadog_filter:
+    mode: synchronous
+    query: "service:super-sdk @view.url_details.host:app.gather.town "
+    from: 1686656100000
+    to: 1686670500000
+  mapping:
+    - field: "date"
+      dd_field: "date"
+    - field: "session_id"
+      dd_field: "session_id"
+    - field: "-"
+      dd_field: "data"
+      inner_field:
+        - field: "req_id"
+          dd_field: "requestId"
+        - field: "event_ts"
+          dd_field: "payload.ets"
+        - field: "event_type"
+          dd_field: "payload.etyp"
+        - field: "dstid"
+          dd_field: "payload.data.dstid"
+        - field: "srcId"
+          dd_field: "payload.data.srcId"

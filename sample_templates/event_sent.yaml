@@ -1,0 +1,30 @@
+apiVersion: datadog/v1
+kind: DataDog
+spec:
+  auth:
+    dd_site: "datadoghq.com"
+    dd_api_key: "xxxxxxxxxx"
+    dd_app_key: "xxxxxxxxxx"
+  datadog_filter:
+    mode: synchronous
+    query: 'service:super-sdk "socket: event sent without queuing" @type:C2S '
+    from: 1686306900000
+    to: 1686306960000
+  mapping:
+    - field: "date"
+      dd_field: "date"
+    - field: "session_id"
+      dd_field: "session_id"
+    - field: "-"
+      dd_field: "data"
+      inner_field:
+        - field: "req_id"
+          dd_field: "reqId"
+        - field: "event_ts"
+          dd_field: "event.ets"
+        - field: "event_type"
+          dd_field: "event.etyp"
+        - field: "dest_id"
+          dd_field: "event.data.dstid"
+        - field: "source_id"
+          dd_field: "event.data.srcId"
