@@ -59,7 +59,6 @@ func CreateConfigYAML(name string) {
 	config.Kind = "DataDog"
 	config.Spec.Auth.DdSite = "datadoghq.com"
 
-	config.Spec.DatadogFilter.Mode = "parallel"
 	config.Spec.DatadogFilter.From = int(time.Now().Add(-10 * time.Minute).UnixMilli())
 	config.Spec.DatadogFilter.To = int(time.Now().UnixMilli())
 

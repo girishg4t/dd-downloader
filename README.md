@@ -1,12 +1,11 @@
 # dd-log-downloader
-Download large amount of datadog logs in csv format as per template, this data can be inserted into database or any other tool for analysis, since there is 100k limit for downloading the  
-data, hence this tool
+Download large amount of datadog logs in csv format as per template, this data can be inserted into database or any other tool for analysis, since there is 100k limit for downloading the data, hence this tool. I have created a blog for the same [blog](https://dev.to/girishg4t/how-to-download-large-amount-of-datadog-logs-in-parallel-471m)
 
 ## Usage
 #### Step 1: Clone the repo
 
 ```bash
-$ git clone https://github.com/girishg4t/datadog-log-downloader.git
+$ git clone https://github.com/girishg4t/dd-downloader.git
 ```
 
 #### Step 2: Build binary using make
@@ -24,9 +23,12 @@ $ dd-downloader run parallel --config-file=templates/private_event.yaml --file=o
 
 ```
 
+### Flow:
+
+![flow](./datadog-downloader.png)
 
 ## Prerequisite
-You need to create the yaml config file as per [examples](https://github.com/girishg4t/datadog-log-downloader/tree/master/sample_templates)
+You need to create the yaml config file as per [examples](https://github.com/girishg4t/dd-downloader/tree/master/sample_templates)
 
 ### Things to keep in mind
 ```
@@ -38,7 +40,6 @@ more details are here [datadog](https://docs.datadoghq.com/account_management/ap
 
 ```
 datadog_filter:
-- mode => it can be `synchronous` or `parallel`, in `parallel` mode large time frame more than 10min is converted into 10 parallel chuck to reduce the time of download
 - query => logs will be filtered based on this query, verify it in datadog before using
 - from => from which date the logs need to be downloaded
 - to => to which date 
@@ -107,7 +108,6 @@ spec:
     dd_api_key: "xxxxxxxxxx"
     dd_app_key: "xxxxxxxxxx"
   datadog_filter:
-    mode: synchronous
     query: 'service:super-sdk "socket: event sent without queuing" @type:C2S '
     from: 1686306900000
     to: 1686306960000

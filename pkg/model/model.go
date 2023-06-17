@@ -9,7 +9,6 @@ type Auth struct {
 }
 
 type DataDogFilter struct {
-	Mode  string `yaml:"mode"`
 	Query string `yaml:"query"`
 	From  int    `yaml:"from"`
 	To    int    `yaml:"to"`

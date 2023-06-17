@@ -1,13 +1,11 @@
 apiVersion: datadog/v1
 kind: DataDog
-mode: synchronous
 spec:
   auth:
     dd_site: "datadoghq.com"
     dd_api_key: "xxxxxxxxxx"
     dd_app_key: "xxxxxxxxxx"
   datadog_filter:
-    mode: synchronous
     query: "service:frontend @view.url_details.host:example.com "
     from: 1686656100000
     to: 1686670500000

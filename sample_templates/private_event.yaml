@@ -6,7 +6,6 @@ spec:
     dd_api_key: "xxxxxxxxxx"
     dd_app_key: "xxxxxxxxxx"
   datadog_filter:
-    mode: parallel
     query: 'service:(backend-prod) (\"received some private event from queue\")'
     from: 1686335400000
     to: 1686421740000
