@@ -108,7 +108,7 @@ spec:
     dd_api_key: "xxxxxxxxxx"
     dd_app_key: "xxxxxxxxxx"
   datadog_filter:
-    query: 'service:super-sdk "socket: event sent without queuing" @type:C2S '
+    query: 'service:frontend "socket: not able to connect to server" @type:SERVER_EVENT '
     from: 1686306900000
     to: 1686306960000
   mapping:
