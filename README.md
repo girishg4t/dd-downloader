@@ -41,8 +41,8 @@ more details are here [datadog](https://docs.datadoghq.com/account_management/ap
 ```
 datadog_filter:
 - query => logs will be filtered based on this query, verify it in datadog before using
-- from => from which date the logs need to be downloaded
-- to => to which date 
+- from => from which date the logs need to be downloaded, supports only unix milliseconds
+- to => to which date, supports only unix milliseconds 
 ```
 more details are here [datadog](https://docs.datadoghq.com/tracing/trace_explorer/query_syntax/)
 
