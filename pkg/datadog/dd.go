@@ -15,12 +15,10 @@ func GetDataDogLogs(filter model.DataDogFilter, cur *string, limit int32) datado
 	log.Printf("query=>%s, from %d, to %d\n", filter.Query, filter.From, filter.To)
 	body := datadogV2.LogsListRequest{
 		Filter: &datadogV2.LogsQueryFilter{
-			Query: datadog.PtrString(filter.Query),
-			Indexes: []string{
-				"main",
-			},
-			From: datadog.PtrString(fmt.Sprintf("%d", filter.From)),
-			To:   datadog.PtrString(fmt.Sprintf("%d", filter.To)),
+			Query:   datadog.PtrString(filter.Query),
+			Indexes: filter.Indexes,
+			From:    datadog.PtrString(fmt.Sprintf("%d", filter.From)),
+			To:      datadog.PtrString(fmt.Sprintf("%d", filter.To)),
 		},
 		Sort: datadogV2.LOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
 		Page: &datadogV2.LogsListRequestPage{
