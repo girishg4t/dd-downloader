@@ -9,9 +9,10 @@ type Auth struct {
 }
 
 type DataDogFilter struct {
-	Query string `yaml:"query"`
-	From  int    `yaml:"from"`
-	To    int    `yaml:"to"`
+	Query   string   `yaml:"query"`
+	From    int      `yaml:"from"`
+	To      int      `yaml:"to"`
+	Indexes []string `yaml:"indexes"`
 }
 
 type Spec struct {
