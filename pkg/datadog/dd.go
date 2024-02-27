@@ -19,8 +19,8 @@ func GetDataDogLogs(filter model.DataDogFilter, cur *string, limit int32) datado
 			Indexes: []string{
 				"main",
 			},
-			From: datadog.PtrString(fmt.Sprintf("%d", filter.From)),
-			To:   datadog.PtrString(fmt.Sprintf("%d", filter.To)),
+			From: datadog.PtrString("2024-01-28T00:00:00+00:00"),
+			To:   datadog.PtrString("2024-02-27T00:00:00+00:00"),
 		},
 		Sort: datadogV2.LOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
 		Page: &datadogV2.LogsListRequestPage{
@@ -28,6 +28,7 @@ func GetDataDogLogs(filter model.DataDogFilter, cur *string, limit int32) datado
 			Cursor: cur,
 		},
 	}
+
 	ctx := datadog.NewDefaultContext(context.Background())
 	configuration := datadog.NewConfiguration()
 	apiClient := datadog.NewAPIClient(configuration)

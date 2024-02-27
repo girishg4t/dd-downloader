@@ -32,6 +32,7 @@ func CsvWriter(filename string, header []string, values [][]string) {
 	}
 
 	for _, val := range values {
+
 		_ = csvwriter.Write(val)
 	}
 	csvwriter.Flush()

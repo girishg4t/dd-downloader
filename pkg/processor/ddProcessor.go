@@ -99,6 +99,7 @@ func (y YamlProcessor) RunParallel(ch chan [][]string, done chan bool) {
 			defer w.Done()
 			nddLogs = func(after *string, ddf model.DataDogFilter) {
 				logs := dd.GetDataDogLogs(ddf, after, 5000)
+				fmt.Printf("Log attr: %+v\n", *logs.GetData()[0].GetAttributes().Message)
 				log.Printf("Found records => %d for date %d - %d \n", len(logs.Data), ddf.From, ddf.To)
 				csvValues, err := y.getLogs(logs.Data)
 				if err != nil {
@@ -129,13 +130,14 @@ func (y YamlProcessor) RunParallel(ch chan [][]string, done chan bool) {
 // one's found we need to get all values based on inner mapping
 func (y YamlProcessor) getLogs(source []datadogV2.Log) ([][]string, error) {
 	var csvValues [][]string
+	fmt.Println("SOURCE LENGTH: ", len(source))
 	for _, log := range source {
+		// fmt.Printf("LOG: %+v\n", *log.Attributes)
 		var ddVal []string
 		for _, fl := range y.Yaml.Spec.Mapping {
 			if fl.Field == "-" {
 				field_dep := strings.Split(fl.DdField, ".")
 				n := len(field_dep)
-				log.Attributes.Attributes["message"] = *log.Attributes.Message
 				var outerObj = deepSearch(log.Attributes.Attributes, field_dep)
 				var newDdVal []string
 
@@ -148,8 +150,7 @@ func (y YamlProcessor) getLogs(source []datadogV2.Log) ([][]string, error) {
 				continue
 			}
 
-			log.Attributes.Attributes["message"] = *log.Attributes.Message
-			val := getValue(fl, log.Attributes.Attributes)
+			val := *log.Attributes.Message
 			ddVal = append(ddVal, fmt.Sprint(val))
 		}
 		csvValues = append(csvValues, ddVal)

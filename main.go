@@ -8,5 +8,5 @@ import (
 
 func main() {
 	cmd.Execute()
-	log.Println("Done Downloading")
+	log.Println("Done Dloading")
 }
